@@ -1,7 +1,3 @@
-/* =========================================
-   BASIC SETUP
-========================================= */
-
 * {
   box-sizing: border-box;
 }
@@ -9,11 +5,8 @@
 :root {
   --cream: #f3ead8;
   --cream-soft: #cfc3b5;
-
   --gold: #c6a46a;
   --gold-soft: #9e8052;
-
-  --dark: #141210;
 
   --mouse-x: 50%;
   --mouse-y: 50%;
@@ -25,22 +18,18 @@ html {
 
 body {
   margin: 0;
-
   min-height: 100vh;
 
   background:
     linear-gradient(
-      rgba(7, 6, 6, 0.28),
-      rgba(7, 6, 6, 0.46)
+      rgba(7, 6, 6, 0.25),
+      rgba(7, 6, 6, 0.42)
     ),
-    url("background.jpg");
+    url("backgroud.jpg");
 
   background-size: cover;
-
   background-position: center;
-
   background-repeat: no-repeat;
-
   background-attachment: fixed;
 
   color: var(--cream);
@@ -52,20 +41,17 @@ body {
 }
 
 
-/* =========================================
-   CURSOR GLOW
-========================================= */
+/* CURSOR GLOW */
 
 body::before {
   content: "";
 
   position: fixed;
-
   inset: 0;
 
-  z-index: 2;
-
   pointer-events: none;
+
+  z-index: 2;
 
   background:
     radial-gradient(
@@ -81,9 +67,7 @@ body::before {
 }
 
 
-/* =========================================
-   SUBTLE RAIN
-========================================= */
+/* SUBTLE RAIN */
 
 body::after {
   content: "";
@@ -92,11 +76,11 @@ body::after {
 
   inset: -100px 0 0 0;
 
-  z-index: 1;
-
   pointer-events: none;
 
-  opacity: 0.16;
+  z-index: 1;
+
+  opacity: 0.14;
 
   background-image:
     repeating-linear-gradient(
@@ -130,9 +114,7 @@ body::after {
 }
 
 
-/* =========================================
-   PAGE LAYOUT
-========================================= */
+/* PAGE */
 
 main {
   position: relative;
@@ -147,9 +129,7 @@ main {
 }
 
 
-/* =========================================
-   TRANSLUCENT QUIZ PANELS
-========================================= */
+/* TRANSLUCENT QUIZ PANELS */
 
 #start-screen,
 #quiz-screen {
@@ -160,7 +140,7 @@ main {
   text-align: center;
 
   background:
-    rgba(18, 16, 15, 0.66);
+    rgba(18, 16, 15, 0.62);
 
   border:
     1px solid
@@ -169,35 +149,25 @@ main {
   border-radius: 24px;
 
   box-shadow:
-    0 22px 60px
-      rgba(0, 0, 0, 0.50),
+    0 22px 60px rgba(0, 0, 0, 0.50),
+    inset 0 0 0 1px rgba(255, 241, 215, 0.055);
 
-    inset 0 0 0 1px
-      rgba(255, 241, 215, 0.055);
-
-  backdrop-filter:
-    blur(7px);
-
-  -webkit-backdrop-filter:
-    blur(7px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 
   overflow: hidden;
 }
 
 
-/* =========================================
-   TYPOGRAPHY
-========================================= */
+/* TYPOGRAPHY */
 
 h1 {
   margin-top: 0;
-
   margin-bottom: 24px;
 
   color: #f5ead6;
 
   font-size: 52px;
-
   line-height: 1.08;
 
   font-weight: 500;
@@ -208,13 +178,11 @@ h1 {
 h2 {
   max-width: 760px;
 
-  margin:
-    12px auto 38px;
+  margin: 12px auto 38px;
 
   color: #f1e5cf;
 
   font-size: 31px;
-
   line-height: 1.4;
 
   font-weight: 500;
@@ -236,7 +204,6 @@ p {
   color: #c9beb0;
 
   font-size: 18px;
-
   line-height: 1.7;
 }
 
@@ -261,9 +228,7 @@ p {
 }
 
 
-/* =========================================
-   QUESTION PROGRESS
-========================================= */
+/* QUESTION PROGRESS */
 
 #progress {
   margin: 0 0 25px;
@@ -278,9 +243,7 @@ p {
 }
 
 
-/* =========================================
-   START / RESTART BUTTON
-========================================= */
+/* START / RESTART BUTTON */
 
 #start-button,
 #restart-button {
@@ -316,11 +279,8 @@ p {
   cursor: pointer;
 
   box-shadow:
-    0 0 0 1px
-      rgba(255, 238, 199, 0.08),
-
-    0 0 20px
-      rgba(190, 146, 73, 0.13);
+    0 0 0 1px rgba(255, 238, 199, 0.08),
+    0 0 20px rgba(190, 146, 73, 0.13);
 
   transition:
     transform 0.2s ease,
@@ -340,17 +300,12 @@ p {
     );
 
   box-shadow:
-    0 0 0 1px
-      rgba(255, 238, 199, 0.14),
-
-    0 0 27px
-      rgba(190, 146, 73, 0.30);
+    0 0 0 1px rgba(255, 238, 199, 0.14),
+    0 0 27px rgba(190, 146, 73, 0.30);
 }
 
 
-/* =========================================
-   ANSWERS
-========================================= */
+/* ANSWERS */
 
 #answers {
   width: 100%;
@@ -362,7 +317,6 @@ p {
   position: relative;
 
   width: 100%;
-
   max-width: 720px;
 
   margin: 17px auto;
@@ -394,7 +348,6 @@ p {
     serif;
 
   font-size: 17px;
-
   line-height: 1.5;
 
   text-align: left;
@@ -402,8 +355,7 @@ p {
   cursor: pointer;
 
   box-shadow:
-    0 5px 16px
-      rgba(0, 0, 0, 0.20);
+    0 5px 16px rgba(0, 0, 0, 0.20);
 
   transition:
     transform 0.18s ease,
@@ -425,39 +377,29 @@ p {
   border-color: #d0ad70;
 
   box-shadow:
-    0 8px 24px
-      rgba(0, 0, 0, 0.26),
-
-    0 0 20px
-      rgba(193, 150, 81, 0.20);
+    0 8px 24px rgba(0, 0, 0, 0.26),
+    0 0 20px rgba(193, 150, 81, 0.20);
 }
 
 
-/* =========================================
-   A B C D MEDALLIONS
-========================================= */
+/* A B C D */
 
 .answer::before {
-  content:
-    attr(data-letter);
+  content: attr(data-letter);
 
   position: absolute;
 
   left: 23px;
-
   top: 50%;
 
-  transform:
-    translateY(-50%);
+  transform: translateY(-50%);
 
   width: 35px;
-
   height: 35px;
 
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   background:
@@ -476,9 +418,7 @@ p {
 }
 
 
-/* =========================================
-   QUESTION REVEAL
-========================================= */
+/* SCREEN REVEAL */
 
 .reveal-screen {
   animation:
@@ -513,9 +453,7 @@ p {
 }
 
 
-/* =========================================
-   ANSWERS APPEAR SEQUENTIALLY
-========================================= */
+/* ANSWER ENTRANCES */
 
 .answer {
   animation:
@@ -545,33 +483,25 @@ p {
 
   from {
     opacity: 0;
-
-    transform:
-      translateY(10px);
+    transform: translateY(10px);
   }
 
   to {
     opacity: 1;
-
-    transform:
-      translateY(0);
+    transform: translateY(0);
   }
 
 }
 
 
-/* =========================================
-   RESULT SCREEN
-========================================= */
+/* RESULT */
 
 #result-screen {
   width: 100%;
 }
 
 
-/* =========================================
-   CERTIFICATE
-========================================= */
+/* CERTIFICATE */
 
 .certificate {
   position: relative;
@@ -586,7 +516,7 @@ p {
   text-align: center;
 
   background:
-    rgba(18, 15, 14, 0.72);
+    rgba(18, 15, 14, 0.68);
 
   border:
     1px solid
@@ -595,20 +525,12 @@ p {
   border-radius: 18px;
 
   box-shadow:
-    inset 0 0 0 5px
-      rgba(202, 168, 105, 0.04),
+    inset 0 0 0 5px rgba(202, 168, 105, 0.04),
+    inset 0 0 0 6px rgba(202, 168, 105, 0.24),
+    0 28px 70px rgba(0, 0, 0, 0.55);
 
-    inset 0 0 0 6px
-      rgba(202, 168, 105, 0.24),
-
-    0 28px 70px
-      rgba(0, 0, 0, 0.55);
-
-  backdrop-filter:
-    blur(8px);
-
-  -webkit-backdrop-filter:
-    blur(8px);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
 
 .certificate::before {
@@ -617,11 +539,9 @@ p {
   position: absolute;
 
   top: 17px;
-
   left: 50%;
 
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
 
   color: #c7a568;
 
@@ -632,7 +552,6 @@ p {
   display: flex;
 
   justify-content: space-between;
-
   align-items: center;
 
   gap: 20px;
@@ -687,15 +606,12 @@ p {
 }
 
 
-/* =========================================
-   ORNAMENTAL DIVIDER
-========================================= */
+/* ORNAMENTAL DIVIDER */
 
 .ornamental-divider {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 15px;
@@ -737,9 +653,7 @@ p {
 }
 
 
-/* =========================================
-   BOOK LINKS
-========================================= */
+/* BOOK LINKS */
 
 #recommendations {
   margin-top: 24px;
@@ -752,11 +666,10 @@ p {
 
   margin: 13px auto;
 
-  padding:
-    16px 21px;
+  padding: 16px 21px;
 
   background:
-    rgba(34, 29, 25, 0.70);
+    rgba(34, 29, 25, 0.68);
 
   color: #eadfc9;
 
@@ -775,20 +688,16 @@ p {
 }
 
 .book-link:hover {
-  transform:
-    translateY(-1px);
+  transform: translateY(-1px);
 
   background:
     rgba(65, 52, 42, 0.86);
 
-  border-color:
-    #caa86b;
+  border-color: #caa86b;
 }
 
 
-/* =========================================
-   CERTIFICATE FOOTER
-========================================= */
+/* CERTIFICATE FOOTER */
 
 .certificate-footer {
   display: grid;
@@ -840,19 +749,17 @@ p {
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media (max-width: 600px) {
 
   body {
     background:
       linear-gradient(
-        rgba(7, 6, 6, 0.24),
-        rgba(7, 6, 6, 0.40)
+        rgba(7, 6, 6, 0.18),
+        rgba(7, 6, 6, 0.34)
       ),
-      url("background.jpg");
+      url("backgroud.jpg");
 
     background-size: cover;
 
@@ -870,7 +777,7 @@ p {
 
 
   body::after {
-    opacity: 0.08;
+    opacity: 0.07;
   }
 
 
@@ -878,29 +785,31 @@ p {
     width: 100%;
 
     padding:
-      25px 12px;
+      22px
+      12px;
   }
 
 
   #start-screen,
   #quiz-screen {
     min-height:
-      calc(100vh - 50px);
+      calc(100vh - 44px);
 
     padding:
-      42px 21px;
+      42px
+      21px;
 
     border-radius:
       20px;
 
     background:
-      rgba(16, 14, 13, 0.60);
+      rgba(16, 14, 13, 0.52);
 
     backdrop-filter:
-      blur(5px);
+      blur(4px);
 
     -webkit-backdrop-filter:
-      blur(5px);
+      blur(4px);
   }
 
 
@@ -940,7 +849,7 @@ p {
     border-radius: 17px;
 
     background:
-      rgba(35, 30, 26, 0.82);
+      rgba(35, 30, 26, 0.78);
   }
 
 
@@ -948,7 +857,6 @@ p {
     left: 16px;
 
     width: 31px;
-
     height: 31px;
   }
 
@@ -967,13 +875,13 @@ p {
     border-radius: 20px;
 
     background:
-      rgba(16, 14, 13, 0.67);
+      rgba(16, 14, 13, 0.58);
 
     backdrop-filter:
-      blur(6px);
+      blur(5px);
 
     -webkit-backdrop-filter:
-      blur(6px);
+      blur(5px);
   }
 
 
@@ -1003,8 +911,7 @@ p {
 
 
   .certificate-footer {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
@@ -1015,9 +922,7 @@ p {
 }
 
 
-/* =========================================
-   REDUCED MOTION
-========================================= */
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
 
