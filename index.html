@@ -14,11 +14,13 @@
 
   <main>
 
+    <!-- START SCREEN -->
+
     <section id="start-screen">
 
       <h1>Which Intellectual Crisis Are You?</h1>
 
-      <p>
+      <p class="intro">
         Eight questions. Six possible diagnoses.
         Absolutely no clinical validity.
       </p>
@@ -29,31 +31,51 @@
 
     </section>
 
+
+    <!-- QUIZ SCREEN -->
+
     <section id="quiz-screen" style="display: none;">
 
-      <h2>
-        You discover that everything you believe might be wrong. What do you do?
-      </h2>
+      <p id="progress"></p>
 
-      <button class="answer">
-        Excellent. Let’s doubt absolutely everything.
-      </button>
+      <h2 id="question-text"></h2>
 
-      <button class="answer">
-        But what does this mean for how I should live?
-      </button>
+      <div id="answers"></div>
 
-      <button class="answer">
-        Who taught me these beliefs, and who benefits?
-      </button>
+    </section>
 
-      <button class="answer">
-        First we need to define what “wrong” actually means.
+
+    <!-- RESULT SCREEN -->
+
+    <section id="result-screen" style="display: none;">
+
+      <p class="result-label">
+        PSYCHOLOGICAL BASEMENT DIAGNOSIS
+      </p>
+
+      <h1 id="result-title"></h1>
+
+      <h3>Your intellectual condition:</h3>
+      <p id="result-description"></p>
+
+      <h3>Symptoms:</h3>
+      <p id="result-symptoms"></p>
+
+      <h3>Prescribed philosophers:</h3>
+      <p id="result-philosophers"></p>
+
+      <h3>Meixi’s reading prescription:</h3>
+
+      <div id="recommendations"></div>
+
+      <button id="restart-button">
+        REQUEST A SECOND OPINION
       </button>
 
     </section>
 
   </main>
+
 
   <script src="script.js"></script>
 
