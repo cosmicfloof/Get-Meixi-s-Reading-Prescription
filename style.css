@@ -1,146 +1,267 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+
   background: #f1e6d2;
   color: #3a322a;
+
   font-family: Georgia, serif;
 }
 
 main {
   width: min(90%, 850px);
+
   margin: 0 auto;
   padding: 70px 20px;
+
   text-align: center;
 }
 
+
+/* TYPOGRAPHY */
+
 h1 {
   font-size: 52px;
+  line-height: 1.1;
+
   margin-bottom: 25px;
 }
 
 h2 {
   font-size: 32px;
   line-height: 1.35;
+
   margin-bottom: 35px;
+}
+
+h3 {
+  margin-top: 30px;
+  margin-bottom: 8px;
+
+  font-size: 19px;
+
+  color: #745f3b;
 }
 
 p {
   font-size: 18px;
-  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.intro {
+  margin-bottom: 30px;
+}
+
+#progress {
+  font-size: 14px;
+  letter-spacing: 2px;
+
+  color: #8b7658;
+
+  margin-bottom: 25px;
 }
 
 
 /* START BUTTON */
 
-#start-button {
+#start-button,
+#restart-button {
   display: block;
-  margin: 25px auto;
+
+  margin: 28px auto;
+
   padding: 18px 32px;
 
   background: #342d27;
   color: #f7f0df;
 
-  border: 1px solid #c9b88a;
+  border: 1px solid #d6c39a;
   border-radius: 18px;
 
-  font-size: 16px;
   font-family: Georgia, serif;
+  font-size: 16px;
+
   cursor: pointer;
 
   box-shadow:
-    0 0 0 1px rgba(255, 248, 226, 0.35),
-    0 0 14px rgba(196, 157, 82, 0.22);
+    0 0 0 1px rgba(255, 248, 226, 0.25),
+    0 0 16px rgba(184, 144, 75, 0.22);
 
   transition: 0.2s ease;
 }
 
-#start-button:hover {
-  background: #453a30;
+#start-button:hover,
+#restart-button:hover {
+  background: #493d32;
+
+  transform: translateY(-2px);
+
   box-shadow:
-    0 0 0 1px rgba(255, 248, 226, 0.45),
-    0 0 18px rgba(196, 157, 82, 0.35);
+    0 0 0 1px rgba(255, 248, 226, 0.4),
+    0 0 20px rgba(184, 144, 75, 0.38);
 }
 
 
 /* ANSWER BUTTONS */
+
+#answers {
+  width: 100%;
+}
 
 .answer {
   display: block;
   position: relative;
 
   width: 100%;
-  max-width: 680px;
+  max-width: 700px;
 
   margin: 18px auto;
-  padding: 20px 26px 20px 70px;
 
-  background: #2f2924;
+  padding: 20px 28px 20px 78px;
+
+  background: #302923;
   color: #f8f0df;
 
-  border: 1px solid #d6c39a;
-  border-radius: 20px;
+  border: 1px solid #d8c69d;
+  border-radius: 22px;
 
-  font-size: 17px;
   font-family: Georgia, serif;
+  font-size: 17px;
 
   text-align: left;
-  line-height: 1.45;
+  line-height: 1.5;
 
   cursor: pointer;
-  box-sizing: border-box;
 
   box-shadow:
-    0 0 0 1px rgba(255, 248, 226, 0.22),
-    0 0 14px rgba(184, 144, 75, 0.18);
+    0 0 0 1px rgba(255, 248, 226, 0.18),
+    0 0 15px rgba(184, 144, 75, 0.16);
 
   transition: 0.2s ease;
 }
 
 .answer:hover {
-  background: #40372f;
+  background: #443a31;
+
   transform: translateY(-2px);
 
   box-shadow:
-    0 0 0 1px rgba(255, 248, 226, 0.34),
-    0 0 18px rgba(184, 144, 75, 0.32);
+    0 0 0 1px rgba(255, 248, 226, 0.32),
+    0 0 20px rgba(184, 144, 75, 0.32);
 }
 
 
-/* A B C D LABELS */
+/* A B C D CIRCLES */
 
 .answer::before {
+  content: attr(data-letter);
+
   position: absolute;
-  left: 22px;
+
+  left: 23px;
   top: 50%;
+
   transform: translateY(-50%);
 
-  width: 32px;
-  height: 32px;
+  width: 35px;
+  height: 35px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid #d6c39a;
+  border: 1px solid #ddca9c;
   border-radius: 50%;
 
-  color: #e2c98f;
+  color: #e3c889;
+
   font-size: 14px;
   font-weight: bold;
 }
 
-.answer:nth-of-type(1)::before {
-  content: "A";
+
+/* RESULT */
+
+#result-screen {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.answer:nth-of-type(2)::before {
-  content: "B";
+.result-label {
+  font-size: 13px;
+
+  letter-spacing: 3px;
+
+  color: #927747;
 }
 
-.answer:nth-of-type(3)::before {
-  content: "C";
+#result-title {
+  margin-top: 15px;
+  margin-bottom: 35px;
 }
 
-.answer:nth-of-type(4)::before {
-  content: "D";
+#recommendations {
+  margin-top: 20px;
+}
+
+.book-link {
+  display: block;
+
+  max-width: 580px;
+
+  margin: 12px auto;
+  padding: 15px 20px;
+
+  color: #3a322a;
+
+  border: 1px solid #b39b6a;
+  border-radius: 14px;
+
+  text-decoration: none;
+
+  background: rgba(255, 255, 255, 0.22);
+
+  transition: 0.2s ease;
+}
+
+.book-link:hover {
+  background: rgba(255, 255, 255, 0.48);
+
+  transform: translateY(-1px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+  main {
+    width: 94%;
+    padding: 45px 14px;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .answer {
+    padding: 18px 18px 18px 65px;
+
+    font-size: 16px;
+  }
+
+  .answer::before {
+    left: 17px;
+
+    width: 32px;
+    height: 32px;
+  }
 }
