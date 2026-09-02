@@ -11,7 +11,7 @@ body {
       rgba(9, 8, 8, 0.46),
       rgba(9, 8, 8, 0.62)
     ),
-    url("background.jpg");
+    url("backgroud.jpg");
 
   background-size: cover;
   background-position: center;
@@ -35,7 +35,7 @@ main {
 }
 
 
-/* GLASS / CHARCOAL PANEL */
+/* MAIN PANELS */
 
 #start-screen,
 #quiz-screen,
@@ -122,6 +122,21 @@ p {
 }
 
 
+/* SMALL GOLD LABELS */
+
+.result-label {
+  margin-bottom: 10px;
+
+  color: #b9985f;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+
+  text-transform: uppercase;
+}
+
+
 /* QUESTION COUNTER */
 
 #progress {
@@ -137,7 +152,7 @@ p {
 }
 
 
-/* MAIN ACTION BUTTONS */
+/* START + RESTART BUTTONS */
 
 #start-button,
 #restart-button {
@@ -264,7 +279,7 @@ p {
 }
 
 
-/* A B C D MEDALLIONS */
+/* A B C D CIRCLES */
 
 .answer::before {
   content: attr(data-letter);
@@ -300,19 +315,14 @@ p {
 
 /* RESULT SCREEN */
 
-.result-label {
-  margin-bottom: 10px;
+#result-screen {
+  max-width: 760px;
 
-  color: #b9985f;
-
-  font-size: 12px;
-
-  letter-spacing: 4px;
-
-  text-transform: uppercase;
+  margin: 0 auto;
 }
 
 #result-title {
+  margin-top: 15px;
   margin-bottom: 38px;
 
   color: #f5ead5;
