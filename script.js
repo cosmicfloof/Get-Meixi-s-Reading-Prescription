@@ -1,24 +1,56 @@
-const startButton = document.querySelector("#start-button");
-const restartButton = document.querySelector("#restart-button");
+/* =========================================
+   ELEMENTS
+========================================= */
 
-const startScreen = document.querySelector("#start-screen");
-const quizScreen = document.querySelector("#quiz-screen");
-const resultScreen = document.querySelector("#result-screen");
+const startButton =
+  document.querySelector("#start-button");
 
-const progress = document.querySelector("#progress");
-const questionText = document.querySelector("#question-text");
-const answersContainer = document.querySelector("#answers");
-
-const resultTitle = document.querySelector("#result-title");
-const resultDescription = document.querySelector("#result-description");
-const resultSymptoms = document.querySelector("#result-symptoms");
-const resultPhilosophers = document.querySelector("#result-philosophers");
-const recommendations = document.querySelector("#recommendations");
+const restartButton =
+  document.querySelector("#restart-button");
 
 
-/* --------------------------------
-   THE SIX PERSONALITY SCORES
--------------------------------- */
+const startScreen =
+  document.querySelector("#start-screen");
+
+const quizScreen =
+  document.querySelector("#quiz-screen");
+
+const resultScreen =
+  document.querySelector("#result-screen");
+
+
+const progress =
+  document.querySelector("#progress");
+
+const questionText =
+  document.querySelector("#question-text");
+
+const answersContainer =
+  document.querySelector("#answers");
+
+
+const resultTitle =
+  document.querySelector("#result-title");
+
+const resultDescription =
+  document.querySelector("#result-description");
+
+const resultSymptoms =
+  document.querySelector("#result-symptoms");
+
+const resultPhilosophers =
+  document.querySelector("#result-philosophers");
+
+const recommendations =
+  document.querySelector("#recommendations");
+
+const certificateNumber =
+  document.querySelector("#certificate-number");
+
+
+/* =========================================
+   SCORE STATE
+========================================= */
 
 let scores = {
   existential: 0,
@@ -34,9 +66,9 @@ let currentQuestion = 0;
 let finalAnswerType = null;
 
 
-/* --------------------------------
-   THE EIGHT QUESTIONS
--------------------------------- */
+/* =========================================
+   QUESTIONS
+========================================= */
 
 const questions = [
 
@@ -47,23 +79,31 @@ const questions = [
     answers: [
 
       {
-        text: "Excellent. Let’s doubt absolutely everything.",
-        type: "skeptic"
+        text:
+          "Excellent. Let’s doubt absolutely everything.",
+        type:
+          "skeptic"
       },
 
       {
-        text: "But what does this mean for how I should live?",
-        type: "existential"
+        text:
+          "But what does this mean for how I should live?",
+        type:
+          "existential"
       },
 
       {
-        text: "Who taught me these beliefs, and who benefits?",
-        type: "political"
+        text:
+          "Who taught me these beliefs, and who benefits?",
+        type:
+          "political"
       },
 
       {
-        text: "First we need to define what “wrong” actually means.",
-        type: "rationalist"
+        text:
+          "First we need to define what “wrong” actually means.",
+        type:
+          "rationalist"
       }
 
     ]
@@ -77,23 +117,31 @@ const questions = [
     answers: [
 
       {
-        text: "That sounds suspiciously convenient.",
-        type: "moral"
+        text:
+          "That sounds suspiciously convenient.",
+        type:
+          "moral"
       },
 
       {
-        text: "What evidence would actually establish that?",
-        type: "skeptic"
+        text:
+          "What evidence would actually establish that?",
+        type:
+          "skeptic"
       },
 
       {
-        text: "Who gets to decide which moral rules become normal?",
-        type: "political"
+        text:
+          "Who gets to decide which moral rules become normal?",
+        type:
+          "political"
       },
 
       {
-        text: "Before anything else: what exactly is a moral fact?",
-        type: "metaphysical"
+        text:
+          "Before anything else: what exactly is a moral fact?",
+        type:
+          "metaphysical"
       }
 
     ]
@@ -102,28 +150,36 @@ const questions = [
 
   {
     question:
-      "It is 2:17 a.m. You are awake because your brain has decided to investigate something. What is it?",
+      "It is 2:17 a.m. Your brain has decided sleep is less important than investigating something. What is it?",
 
     answers: [
 
       {
-        text: "Whether I am actually choosing my life or merely performing it.",
-        type: "existential"
+        text:
+          "Whether I am actually choosing my life or merely performing it.",
+        type:
+          "existential"
       },
 
       {
-        text: "Whether consciousness can possibly be reduced to physical processes.",
-        type: "metaphysical"
+        text:
+          "Whether consciousness can possibly be reduced to physical processes.",
+        type:
+          "metaphysical"
       },
 
       {
-        text: "Whether my argument from six hours ago was logically consistent.",
-        type: "rationalist"
+        text:
+          "Whether my argument from six hours ago was logically consistent.",
+        type:
+          "rationalist"
       },
 
       {
-        text: "Whether I accidentally did something morally indefensible in 2018.",
-        type: "moral"
+        text:
+          "Whether I accidentally did something morally indefensible in 2018.",
+        type:
+          "moral"
       }
 
     ]
@@ -137,23 +193,31 @@ const questions = [
     answers: [
 
       {
-        text: "My eyebrow rises involuntarily. Citation, please.",
-        type: "skeptic"
+        text:
+          "My eyebrow rises involuntarily. Citation, please.",
+        type:
+          "skeptic"
       },
 
       {
-        text: "I want the definition of “everyone” immediately.",
-        type: "rationalist"
+        text:
+          "I want the definition of “everyone” immediately.",
+        type:
+          "rationalist"
       },
 
       {
-        text: "I become interested in how that belief became socially compulsory.",
-        type: "political"
+        text:
+          "I become interested in how that belief became socially compulsory.",
+        type:
+          "political"
       },
 
       {
-        text: "I wonder whether anyone actually knows anything, including me.",
-        type: "existential"
+        text:
+          "I wonder whether anyone actually knows anything, including me.",
+        type:
+          "existential"
       }
 
     ]
@@ -167,23 +231,31 @@ const questions = [
     answers: [
 
       {
-        text: "Immediately investigate why anyone thought giving me absolute power was acceptable.",
-        type: "political"
+        text:
+          "Investigate why anyone thought giving me absolute power was acceptable.",
+        type:
+          "political"
       },
 
       {
-        text: "Create rules preventing myself from abusing it.",
-        type: "moral"
+        text:
+          "Create rules preventing myself from abusing it.",
+        type:
+          "moral"
       },
 
       {
-        text: "Determine whether authority can ever be rationally justified.",
-        type: "rationalist"
+        text:
+          "Determine whether authority can ever be rationally justified.",
+        type:
+          "rationalist"
       },
 
       {
-        text: "Become deeply concerned that power may alter who I am.",
-        type: "existential"
+        text:
+          "Become concerned that power may alter who I am.",
+        type:
+          "existential"
       }
 
     ]
@@ -197,23 +269,31 @@ const questions = [
     answers: [
 
       {
-        text: "You cannot prove that the future will resemble the past.",
-        type: "skeptic"
+        text:
+          "You cannot prove that the future will resemble the past.",
+        type:
+          "skeptic"
       },
 
       {
-        text: "Your identity may be nothing more than a continuously changing process.",
-        type: "metaphysical"
+        text:
+          "Your identity may be nothing more than a continuously changing process.",
+        type:
+          "metaphysical"
       },
 
       {
-        text: "A good intention can still produce a morally terrible outcome.",
-        type: "moral"
+        text:
+          "A good intention can still produce a morally terrible outcome.",
+        type:
+          "moral"
       },
 
       {
-        text: "The system survives partly because ordinary people keep cooperating with it.",
-        type: "political"
+        text:
+          "The system survives partly because ordinary people keep cooperating with it.",
+        type:
+          "political"
       }
 
     ]
@@ -227,23 +307,31 @@ const questions = [
     answers: [
 
       {
-        text: "I refuse to answer until we define every important word.",
-        type: "rationalist"
+        text:
+          "I refuse to answer until we define every important word.",
+        type:
+          "rationalist"
       },
 
       {
-        text: "I question whether the premise is knowable in the first place.",
-        type: "skeptic"
+        text:
+          "I question whether the premise is knowable in the first place.",
+        type:
+          "skeptic"
       },
 
       {
-        text: "I somehow turn it into a crisis about freedom, death, or meaning.",
-        type: "existential"
+        text:
+          "I somehow turn it into a crisis about freedom, death, or meaning.",
+        type:
+          "existential"
       },
 
       {
-        text: "I somehow end up asking whether reality itself contains the thing we are discussing.",
-        type: "metaphysical"
+        text:
+          "I somehow end up asking whether reality itself contains the thing we are discussing.",
+        type:
+          "metaphysical"
       }
 
     ]
@@ -257,23 +345,31 @@ const questions = [
     answers: [
 
       {
-        text: "Discovering that certainty is mostly a luxury item.",
-        type: "skeptic"
+        text:
+          "Discovering that certainty is mostly a luxury item.",
+        type:
+          "skeptic"
       },
 
       {
-        text: "Discovering that freedom comes with horrifying amounts of responsibility.",
-        type: "existential"
+        text:
+          "Discovering that freedom comes with horrifying amounts of responsibility.",
+        type:
+          "existential"
       },
 
       {
-        text: "Discovering that obedience may be doing more political work than force.",
-        type: "political"
+        text:
+          "Discovering that obedience may be doing more political work than force.",
+        type:
+          "political"
       },
 
       {
-        text: "Discovering that being a good person requires far more thinking than advertised.",
-        type: "moral"
+        text:
+          "Discovering that being a good person requires far more thinking than advertised.",
+        type:
+          "moral"
       }
 
     ]
@@ -282,15 +378,16 @@ const questions = [
 ];
 
 
-/* --------------------------------
-   RESULT TYPES
--------------------------------- */
+/* =========================================
+   RESULTS
+========================================= */
 
 const results = {
 
   existential: {
 
-    title: "THE EXISTENTIAL DISASTER",
+    title:
+      "THE EXISTENTIAL DISASTER",
 
     description:
       "You are less interested in whether life has an instruction manual than in why nobody warned you that you would have to write it yourself.",
@@ -304,18 +401,27 @@ const results = {
     books: [
 
       {
-        title: "Being and Nothingness — Jean-Paul Sartre",
-        url: "https://meixisbookshelf.wordpress.com/existential-despair/"
+        title:
+          "Being and Nothingness — Jean-Paul Sartre",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/existential-despair/"
       },
 
       {
-        title: "The Ethics of Ambiguity — Simone de Beauvoir",
-        url: "https://meixisbookshelf.wordpress.com/existential-despair/"
+        title:
+          "The Ethics of Ambiguity — Simone de Beauvoir",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/existential-despair/"
       },
 
       {
-        title: "The Trouble with Being Born — Emil Cioran",
-        url: "https://meixisbookshelf.wordpress.com/existential-despair/"
+        title:
+          "The Trouble with Being Born — Emil Cioran",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/existential-despair/"
       }
 
     ]
@@ -324,7 +430,8 @@ const results = {
 
   skeptic: {
 
-    title: "THE SKEPTIC",
+    title:
+      "THE SKEPTIC",
 
     description:
       "You trust evidence reluctantly and certainty even less. Claims enter your mind only after completing an unnecessarily hostile customs inspection.",
@@ -338,18 +445,27 @@ const results = {
     books: [
 
       {
-        title: "An Enquiry Concerning Human Understanding — David Hume",
-        url: "https://meixisbookshelf.wordpress.com/epistemic-irritation/#david-hume"
+        title:
+          "An Enquiry Concerning Human Understanding — David Hume",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/epistemic-irritation/#david-hume"
       },
 
       {
-        title: "Theaetetus — Plato",
-        url: "https://meixisbookshelf.wordpress.com/epistemic-irritation/"
+        title:
+          "Theaetetus — Plato",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/epistemic-irritation/"
       },
 
       {
-        title: "Against Method — Paul Feyerabend",
-        url: "https://meixisbookshelf.wordpress.com/epistemic-irritation/"
+        title:
+          "Against Method — Paul Feyerabend",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/epistemic-irritation/"
       }
 
     ]
@@ -358,7 +474,8 @@ const results = {
 
   political: {
 
-    title: "THE POLITICAL DISSIDENT",
+    title:
+      "THE POLITICAL DISSIDENT",
 
     description:
       "You have difficulty encountering a rule without immediately wondering who wrote it, who profits from it, and why everyone else agreed to behave.",
@@ -372,18 +489,27 @@ const results = {
     books: [
 
       {
-        title: "Discourse on Voluntary Servitude — Étienne de La Boétie",
-        url: "https://meixisbookshelf.wordpress.com/political-disobedience/"
+        title:
+          "Discourse on Voluntary Servitude — Étienne de La Boétie",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/political-disobedience/"
       },
 
       {
-        title: "On Liberty — John Stuart Mill",
-        url: "https://meixisbookshelf.wordpress.com/political-disobedience/"
+        title:
+          "On Liberty — John Stuart Mill",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/political-disobedience/"
       },
 
       {
-        title: "The Concept of the Political — Carl Schmitt",
-        url: "https://meixisbookshelf.wordpress.com/political-disobedience/"
+        title:
+          "The Concept of the Political — Carl Schmitt",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/political-disobedience/"
       }
 
     ]
@@ -392,7 +518,8 @@ const results = {
 
   moral: {
 
-    title: "THE MORAL OVERTHINKER",
+    title:
+      "THE MORAL OVERTHINKER",
 
     description:
       "Other people make decisions. You conduct an internal ethics committee hearing and invite several philosophers who despise one another.",
@@ -406,18 +533,27 @@ const results = {
     books: [
 
       {
-        title: "Nicomachean Ethics — Aristotle",
-        url: "https://meixisbookshelf.wordpress.com/moral-indecision/"
+        title:
+          "Nicomachean Ethics — Aristotle",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/moral-indecision/"
       },
 
       {
-        title: "Groundwork of the Metaphysics of Morals — Immanuel Kant",
-        url: "https://meixisbookshelf.wordpress.com/moral-indecision/"
+        title:
+          "Groundwork of the Metaphysics of Morals — Immanuel Kant",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/moral-indecision/"
       },
 
       {
-        title: "Reasons and Persons — Derek Parfit",
-        url: "https://meixisbookshelf.wordpress.com/moral-indecision/"
+        title:
+          "Reasons and Persons — Derek Parfit",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/moral-indecision/"
       }
 
     ]
@@ -426,7 +562,8 @@ const results = {
 
   rationalist: {
 
-    title: "THE RATIONALIST",
+    title:
+      "THE RATIONALIST",
 
     description:
       "You believe many human disasters could be improved considerably if everyone would stop talking for three minutes and define their terms.",
@@ -440,18 +577,27 @@ const results = {
     books: [
 
       {
-        title: "The Problems of Philosophy — Bertrand Russell",
-        url: "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
+        title:
+          "The Problems of Philosophy — Bertrand Russell",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
       },
 
       {
-        title: "Critique of Pure Reason — Immanuel Kant",
-        url: "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
+        title:
+          "Critique of Pure Reason — Immanuel Kant",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
       },
 
       {
-        title: "Naming and Necessity — Saul Kripke",
-        url: "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
+        title:
+          "Naming and Necessity — Saul Kripke",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
       }
 
     ]
@@ -460,7 +606,8 @@ const results = {
 
   metaphysical: {
 
-    title: "THE METAPHYSICAL MENACE",
+    title:
+      "THE METAPHYSICAL MENACE",
 
     description:
       "Reality was perfectly serviceable before you started asking what it was made of, whether identity persists through time, and why consciousness exists at all.",
@@ -474,18 +621,27 @@ const results = {
     books: [
 
       {
-        title: "The Conscious Mind — David Chalmers",
-        url: "https://meixisbookshelf.wordpress.com/consciousness-other-mysteries/"
+        title:
+          "The Conscious Mind — David Chalmers",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/consciousness-other-mysteries/"
       },
 
       {
-        title: "The Monadology — Gottfried Wilhelm Leibniz",
-        url: "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
+        title:
+          "The Monadology — Gottfried Wilhelm Leibniz",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/metaphysical-confusion/"
       },
 
       {
-        title: "Being No One — Thomas Metzinger",
-        url: "https://meixisbookshelf.wordpress.com/consciousness-other-mysteries/"
+        title:
+          "Being No One — Thomas Metzinger",
+
+        url:
+          "https://meixisbookshelf.wordpress.com/consciousness-other-mysteries/"
       }
 
     ]
@@ -494,30 +650,44 @@ const results = {
 };
 
 
-/* --------------------------------
-   START QUIZ
--------------------------------- */
+/* =========================================
+   START
+========================================= */
 
-startButton.addEventListener("click", function () {
+startButton.addEventListener(
+  "click",
+  function () {
 
-  startScreen.style.display = "none";
-  resultScreen.style.display = "none";
-  quizScreen.style.display = "block";
+    resetScores();
 
-  currentQuestion = 0;
+    currentQuestion = 0;
 
-  showQuestion();
+    finalAnswerType = null;
 
-});
+    startScreen.style.display =
+      "none";
+
+    resultScreen.style.display =
+      "none";
+
+    quizScreen.style.display =
+      "block";
+
+    showQuestion();
+
+  }
+);
 
 
-/* --------------------------------
-   DISPLAY QUESTION
--------------------------------- */
+/* =========================================
+   SHOW QUESTION
+========================================= */
 
 function showQuestion() {
 
-  const current = questions[currentQuestion];
+  const current =
+    questions[currentQuestion];
+
 
   progress.textContent =
     "QUESTION " +
@@ -525,144 +695,295 @@ function showQuestion() {
     " OF " +
     questions.length;
 
-  questionText.textContent = current.question;
 
-  answersContainer.innerHTML = "";
+  quizScreen.classList.remove(
+    "reveal-screen"
+  );
 
-  const letters = ["A", "B", "C", "D"];
 
-  current.answers.forEach(function (answer, index) {
+  void quizScreen.offsetWidth;
 
-    const button = document.createElement("button");
 
-    button.className = "answer";
+  quizScreen.classList.add(
+    "reveal-screen"
+  );
 
-    button.textContent = answer.text;
 
-    button.dataset.letter = letters[index];
+  questionText.textContent =
+    current.question;
 
-    button.addEventListener("click", function () {
 
-      scores[answer.type] += 2;
+  answersContainer.innerHTML =
+    "";
 
-      finalAnswerType = answer.type;
 
-      currentQuestion++;
+  const letters =
+    ["A", "B", "C", "D"];
 
-      if (currentQuestion < questions.length) {
 
-        showQuestion();
+  current.answers.forEach(
+    function (answer, index) {
 
-      } else {
+      const button =
+        document.createElement(
+          "button"
+        );
 
-        showResult();
 
-      }
+      button.className =
+        "answer";
 
-    });
 
-    answersContainer.appendChild(button);
+      button.textContent =
+        answer.text;
 
-  });
+
+      button.dataset.letter =
+        letters[index];
+
+
+      button.addEventListener(
+        "click",
+        function () {
+
+          scores[answer.type] += 2;
+
+          finalAnswerType =
+            answer.type;
+
+          currentQuestion++;
+
+
+          if (
+            currentQuestion <
+            questions.length
+          ) {
+
+            showQuestion();
+
+          } else {
+
+            showResult();
+
+          }
+
+        }
+      );
+
+
+      answersContainer.appendChild(
+        button
+      );
+
+    }
+  );
 
 }
 
 
-/* --------------------------------
-   CALCULATE RESULT
--------------------------------- */
+/* =========================================
+   FIND RESULT
+========================================= */
 
 function findWinningType() {
 
-  let highestScore = -1;
+  let highestScore =
+    -1;
 
-  let winners = [];
+  let winners =
+    [];
+
 
   for (const type in scores) {
 
-    if (scores[type] > highestScore) {
+    if (
+      scores[type] >
+      highestScore
+    ) {
 
-      highestScore = scores[type];
+      highestScore =
+        scores[type];
 
-      winners = [type];
+      winners =
+        [type];
 
-    } else if (scores[type] === highestScore) {
+    }
 
-      winners.push(type);
+    else if (
+      scores[type] ===
+      highestScore
+    ) {
+
+      winners.push(
+        type
+      );
 
     }
 
   }
 
 
-  /*
-    If there is a tie, the final answer acts
-    as a small tie-breaker if it is one of
-    the tied personalities.
-  */
-
   if (
     winners.length > 1 &&
-    winners.includes(finalAnswerType)
+    winners.includes(
+      finalAnswerType
+    )
   ) {
 
     return finalAnswerType;
 
   }
 
+
   return winners[0];
 
 }
 
 
-/* --------------------------------
-   SHOW FINAL DIAGNOSIS
--------------------------------- */
+/* =========================================
+   SHOW RESULT
+========================================= */
 
 function showResult() {
 
-  quizScreen.style.display = "none";
-  resultScreen.style.display = "block";
+  quizScreen.style.display =
+    "none";
 
-  const winningType = findWinningType();
+  resultScreen.style.display =
+    "block";
 
-  const result = results[winningType];
 
-  resultTitle.textContent = result.title;
+  resultScreen.classList.remove(
+    "reveal-screen"
+  );
+
+
+  void resultScreen.offsetWidth;
+
+
+  resultScreen.classList.add(
+    "reveal-screen"
+  );
+
+
+  const winningType =
+    findWinningType();
+
+
+  const result =
+    results[winningType];
+
+
+  resultTitle.textContent =
+    result.title;
+
 
   resultDescription.textContent =
     result.description;
 
+
   resultSymptoms.textContent =
     result.symptoms;
+
 
   resultPhilosophers.textContent =
     result.philosophers;
 
-  recommendations.innerHTML = "";
 
-  result.books.forEach(function (book) {
+  const caseNumber =
+    String(
+      Math.floor(
+        Math.random() * 90000
+      ) + 10000
+    );
 
-    const link = document.createElement("a");
 
-    link.className = "book-link";
+  certificateNumber.textContent =
+    "#" + caseNumber;
 
-    link.textContent = book.title;
 
-    link.href = book.url;
+  recommendations.innerHTML =
+    "";
 
-    recommendations.appendChild(link);
 
+  result.books.forEach(
+    function (book) {
+
+      const link =
+        document.createElement(
+          "a"
+        );
+
+
+      link.className =
+        "book-link";
+
+
+      link.textContent =
+        book.title;
+
+
+      link.href =
+        book.url;
+
+
+      recommendations.appendChild(
+        link
+      );
+
+    }
+  );
+
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
   });
 
 }
 
 
-/* --------------------------------
+/* =========================================
    RESTART
--------------------------------- */
+========================================= */
 
-restartButton.addEventListener("click", function () {
+restartButton.addEventListener(
+  "click",
+  function () {
+
+    resetScores();
+
+    currentQuestion = 0;
+
+    finalAnswerType = null;
+
+
+    resultScreen.style.display =
+      "none";
+
+
+    quizScreen.style.display =
+      "none";
+
+
+    startScreen.style.display =
+      "block";
+
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  }
+);
+
+
+/* =========================================
+   RESET SCORES
+========================================= */
+
+function resetScores() {
 
   scores = {
     existential: 0,
@@ -673,11 +994,35 @@ restartButton.addEventListener("click", function () {
     metaphysical: 0
   };
 
-  currentQuestion = 0;
+}
 
-  finalAnswerType = null;
 
-  resultScreen.style.display = "none";
-  startScreen.style.display = "block";
+/* =========================================
+   DESKTOP CURSOR GLOW
+========================================= */
 
-});
+document.addEventListener(
+  "mousemove",
+  function (event) {
+
+    const x =
+      event.clientX + "px";
+
+
+    const y =
+      event.clientY + "px";
+
+
+    document.body.style.setProperty(
+      "--mouse-x",
+      x
+    );
+
+
+    document.body.style.setProperty(
+      "--mouse-y",
+      y
+    );
+
+  }
+);
