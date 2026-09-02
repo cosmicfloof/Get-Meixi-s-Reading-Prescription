@@ -1,13 +1,8 @@
-/* =========================================
-   ELEMENTS
-========================================= */
-
 const startButton =
   document.querySelector("#start-button");
 
 const restartButton =
   document.querySelector("#restart-button");
-
 
 const startScreen =
   document.querySelector("#start-screen");
@@ -18,7 +13,6 @@ const quizScreen =
 const resultScreen =
   document.querySelector("#result-screen");
 
-
 const progress =
   document.querySelector("#progress");
 
@@ -27,7 +21,6 @@ const questionText =
 
 const answersContainer =
   document.querySelector("#answers");
-
 
 const resultTitle =
   document.querySelector("#result-title");
@@ -48,10 +41,6 @@ const certificateNumber =
   document.querySelector("#certificate-number");
 
 
-/* =========================================
-   SCORE STATE
-========================================= */
-
 let scores = {
   existential: 0,
   skeptic: 0,
@@ -65,10 +54,6 @@ let currentQuestion = 0;
 
 let finalAnswerType = null;
 
-
-/* =========================================
-   QUESTIONS
-========================================= */
 
 const questions = [
 
@@ -378,10 +363,6 @@ const questions = [
 ];
 
 
-/* =========================================
-   RESULTS
-========================================= */
-
 const results = {
 
   existential: {
@@ -650,10 +631,6 @@ const results = {
 };
 
 
-/* =========================================
-   START
-========================================= */
-
 startButton.addEventListener(
   "click",
   function () {
@@ -679,15 +656,10 @@ startButton.addEventListener(
 );
 
 
-/* =========================================
-   SHOW QUESTION
-========================================= */
-
 function showQuestion() {
 
   const current =
     questions[currentQuestion];
-
 
   progress.textContent =
     "QUESTION " +
@@ -695,31 +667,24 @@ function showQuestion() {
     " OF " +
     questions.length;
 
-
   quizScreen.classList.remove(
     "reveal-screen"
   );
 
-
   void quizScreen.offsetWidth;
-
 
   quizScreen.classList.add(
     "reveal-screen"
   );
 
-
   questionText.textContent =
     current.question;
-
 
   answersContainer.innerHTML =
     "";
 
-
   const letters =
     ["A", "B", "C", "D"];
-
 
   current.answers.forEach(
     function (answer, index) {
@@ -729,18 +694,14 @@ function showQuestion() {
           "button"
         );
 
-
       button.className =
         "answer";
-
 
       button.textContent =
         answer.text;
 
-
       button.dataset.letter =
         letters[index];
-
 
       button.addEventListener(
         "click",
@@ -752,7 +713,6 @@ function showQuestion() {
             answer.type;
 
           currentQuestion++;
-
 
           if (
             currentQuestion <
@@ -770,7 +730,6 @@ function showQuestion() {
         }
       );
 
-
       answersContainer.appendChild(
         button
       );
@@ -781,10 +740,6 @@ function showQuestion() {
 }
 
 
-/* =========================================
-   FIND RESULT
-========================================= */
-
 function findWinningType() {
 
   let highestScore =
@@ -792,7 +747,6 @@ function findWinningType() {
 
   let winners =
     [];
-
 
   for (const type in scores) {
 
@@ -822,7 +776,6 @@ function findWinningType() {
 
   }
 
-
   if (
     winners.length > 1 &&
     winners.includes(
@@ -834,15 +787,10 @@ function findWinningType() {
 
   }
 
-
   return winners[0];
 
 }
 
-
-/* =========================================
-   SHOW RESULT
-========================================= */
 
 function showResult() {
 
@@ -852,43 +800,33 @@ function showResult() {
   resultScreen.style.display =
     "block";
 
-
   resultScreen.classList.remove(
     "reveal-screen"
   );
 
-
   void resultScreen.offsetWidth;
-
 
   resultScreen.classList.add(
     "reveal-screen"
   );
 
-
   const winningType =
     findWinningType();
-
 
   const result =
     results[winningType];
 
-
   resultTitle.textContent =
     result.title;
-
 
   resultDescription.textContent =
     result.description;
 
-
   resultSymptoms.textContent =
     result.symptoms;
 
-
   resultPhilosophers.textContent =
     result.philosophers;
-
 
   const caseNumber =
     String(
@@ -897,14 +835,11 @@ function showResult() {
       ) + 10000
     );
 
-
   certificateNumber.textContent =
     "#" + caseNumber;
 
-
   recommendations.innerHTML =
     "";
-
 
   result.books.forEach(
     function (book) {
@@ -914,18 +849,14 @@ function showResult() {
           "a"
         );
 
-
       link.className =
         "book-link";
-
 
       link.textContent =
         book.title;
 
-
       link.href =
         book.url;
-
 
       recommendations.appendChild(
         link
@@ -934,7 +865,6 @@ function showResult() {
     }
   );
 
-
   window.scrollTo({
     top: 0,
     behavior: "smooth"
@@ -942,10 +872,6 @@ function showResult() {
 
 }
 
-
-/* =========================================
-   RESTART
-========================================= */
 
 restartButton.addEventListener(
   "click",
@@ -957,18 +883,14 @@ restartButton.addEventListener(
 
     finalAnswerType = null;
 
-
     resultScreen.style.display =
       "none";
-
 
     quizScreen.style.display =
       "none";
 
-
     startScreen.style.display =
       "block";
-
 
     window.scrollTo({
       top: 0,
@@ -978,10 +900,6 @@ restartButton.addEventListener(
   }
 );
 
-
-/* =========================================
-   RESET SCORES
-========================================= */
 
 function resetScores() {
 
@@ -997,9 +915,7 @@ function resetScores() {
 }
 
 
-/* =========================================
-   DESKTOP CURSOR GLOW
-========================================= */
+/* DESKTOP CURSOR GLOW */
 
 document.addEventListener(
   "mousemove",
@@ -1008,16 +924,13 @@ document.addEventListener(
     const x =
       event.clientX + "px";
 
-
     const y =
       event.clientY + "px";
-
 
     document.body.style.setProperty(
       "--mouse-x",
       x
     );
-
 
     document.body.style.setProperty(
       "--mouse-y",
