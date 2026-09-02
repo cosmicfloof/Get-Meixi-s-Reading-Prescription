@@ -1,22 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Psychological Basement</title>
-<link rel="stylesheet" href="style.css">
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <h1>Which Intellectual Crisis Are You?</h1>
+  <main>
 
-  <p>
-    Eight questions. Six possible diagnoses.
-    Absolutely no clinical validity.
-  </p>
+    <section id="start-screen">
 
-  <button>GET MEIXI’S READING PRESCRIPTION</button>
-<script src="script.js"></script>
+      <h1>Which Intellectual Crisis Are You?</h1>
+
+      <p>
+        Eight questions. Six possible diagnoses.
+        Absolutely no clinical validity.
+      </p>
+
+      <button id="start-button">
+        GET MEIXI’S READING PRESCRIPTION
+      </button>
+
+    </section>
+
+    <section id="quiz-screen" style="display: none;">
+
+      <h2>
+        You discover that everything you believe might be wrong. What do you do?
+      </h2>
+
+      <button class="answer">
+        Excellent. Let’s doubt absolutely everything.
+      </button>
+
+      <button class="answer">
+        But what does this mean for how I should live?
+      </button>
+
+      <button class="answer">
+        Who taught me these beliefs, and who benefits?
+      </button>
+
+      <button class="answer">
+        First we need to define what “wrong” actually means.
+      </button>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
